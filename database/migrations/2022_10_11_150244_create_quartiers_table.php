@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('quartiers', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 55);
             $table->timestamps();
         });
     }
