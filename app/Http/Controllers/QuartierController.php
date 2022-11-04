@@ -15,7 +15,9 @@ class QuartierController extends Controller
      */
     public function index()
     {
-        //
+        $quartiers = Quartier::paginate(20);
+
+        return view('quartiers.index', compact('quartiers'));
     }
 
     /**

@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Quartier;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class QuartierSeeder extends Seeder
 {
@@ -14,6 +15,6 @@ class QuartierSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Quartier::factory(10)->create();
     }
 }

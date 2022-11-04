@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Etablissement;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class EtablissementSeeder extends Seeder
 {
@@ -14,6 +15,6 @@ class EtablissementSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Etablissement::factory(100)->create();
     }
 }

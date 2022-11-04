@@ -15,7 +15,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::paginate(10);
+
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -58,7 +60,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('products.edit', compact('product'));
     }
 
     /**
@@ -70,7 +72,14 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $product->update($request->except([
+            '_token', 
+            '_method'
+        ]));
+
+        return redirect()->route('products.index')
+            ->with(['status' => 'success', 
+                    'message' => 'Product updated successfully']);
     }
 
     /**

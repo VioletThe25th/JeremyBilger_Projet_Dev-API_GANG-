@@ -15,7 +15,9 @@ class EtablissementController extends Controller
      */
     public function index()
     {
-        //
+        $etablissements = Etablissement::paginate(10);
+
+        return view('etablissements.index', compact('etablissements'));
     }
 
     /**

@@ -17,7 +17,9 @@ class EtablissementFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => fake()->name(),
+            'adress' => fake()->address(),
+            'type' => fake()->randomElement(['restaurant', 'bar', 'cafe', 'hotel', 'motel', 'fastfood', 'autre']),
         ];
     }
 }

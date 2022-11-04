@@ -15,7 +15,9 @@ class GangController extends Controller
      */
     public function index()
     {
-        //
+        $gangs = Gang::paginate(10);
+
+        return view('gangs.index', compact('gangs'));
     }
 
     /**
