@@ -60,7 +60,7 @@ class GangController extends Controller
      */
     public function edit(Gang $gang)
     {
-        //
+        return view('gangs.edit', compact('gang'));
     }
 
     /**
@@ -72,7 +72,14 @@ class GangController extends Controller
      */
     public function update(UpdateGangRequest $request, Gang $gang)
     {
-        //
+        $gang->update($request->except([
+            '_token', 
+            '_method'
+        ]));
+
+        return redirect()->route('gangs.index')
+            ->with(['status' => 'success', 
+                    'message' => 'Gang updated successfully']);
     }
 
     /**
@@ -83,6 +90,10 @@ class GangController extends Controller
      */
     public function destroy(Gang $gang)
     {
-        //
+        $gang->delete();
+
+        return redirect()->route('gangs.index')
+            ->with(['status' => 'success', 
+                    'message' => 'gang deleted successfully']);
     }
 }

@@ -13,7 +13,7 @@ class UpdateEtablissementRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class UpdateEtablissementRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|min:2|max:55',
+            'adress' => 'required|string|min:2|max:55',
+            'type' => 'required|string|min:2|max:55',
         ];
     }
 }

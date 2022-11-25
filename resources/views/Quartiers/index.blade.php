@@ -31,8 +31,13 @@
                                 <th scope="row">{{$quartier->id}}</th>
                                 <td>{{ $quartier->name }}</td>
                                 <td>
-                                    {{-- <a href="{{ route('quartiers.edit', $quartier->id) }}">{{__('Editer')}}</a>
-                                    <a href="{{ route('quartiers.destroy', $quartier->id) }}">{{__('Supprimer')}}</a> --}}
+                                    <a href="{{ route('quartiers.edit', $quartier->id) }}">{{__('Editer')}}</a>
+                                    {{-- DELETE ACTION --}}
+                                    <form action="{{ route('quartiers.destroy', $quartier->id) }}" method="POST" style="display: inline-block">
+                                        @csrf
+                                        @method("DELETE")
+                                        <a href="#" onclick="event.preventDefault(); if(confirm('Confirmez-vous la suppression de ce quartier ?') ) {this.closest('form').submit();}"><img src="{{ asset('img/icons/remove-square.png') }}" alt="Supprimer le quartier" title="Supprimer le quartier"></a>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

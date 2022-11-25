@@ -13,6 +13,8 @@ class Etablissement extends Model
 
     protected $fillable = [
         'name',
+        'adress',
+        'type',
         'description',
         'quartier_id',
     ];

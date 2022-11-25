@@ -35,8 +35,13 @@
                                 <td>{{ $etablissement->adress }}</td>
                                 <td>{{ $etablissement->type }}</td>
                                 <td>
-                                    {{-- <a href="{{ route('etablissements.edit', $etablissement->id) }}">{{__('Editer')}}</a>
-                                    <a href="{{ route('etablissements.destroy', $etablissement->id) }}">{{__('Supprimer')}}</a> --}}
+                                    <a href="{{ route('etablissements.edit', $etablissement->id) }}">{{__('Editer')}}</a>
+                                    {{-- DELETE ACTION --}}
+                                    <form action="{{ route('etablissements.destroy', $etablissement->id) }}" method="POST" style="display: inline-block">
+                                        @csrf
+                                        @method("DELETE")
+                                        <a href="#" onclick="event.preventDefault(); if(confirm('Confirmez-vous la suppression de cet établissement ?') ) {this.closest('form').submit();}"><img src="{{ asset('img/icons/remove-square.png') }}" alt="Supprimer l'établissement" title="Supprimer l'établissement"></a>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

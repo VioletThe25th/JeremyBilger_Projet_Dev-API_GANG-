@@ -60,7 +60,7 @@ class QuartierController extends Controller
      */
     public function edit(Quartier $quartier)
     {
-        //
+        return view('quartiers.edit', compact('quartier'));
     }
 
     /**
@@ -72,7 +72,14 @@ class QuartierController extends Controller
      */
     public function update(UpdateQuartierRequest $request, Quartier $quartier)
     {
-        //
+        $quartier->update($request->except([
+            '_token', 
+            '_method'
+        ]));
+
+        return redirect()->route('quartiers.index')
+            ->with(['status' => 'success', 
+                    'message' => 'quartier updated successfully']);
     }
 
     /**
@@ -83,6 +90,10 @@ class QuartierController extends Controller
      */
     public function destroy(Quartier $quartier)
     {
-        //
+        $quartier->delete();
+
+        return redirect()->route('quartiers.index')
+            ->with(['status' => 'success', 
+                    'message' => 'quartier deleted successfully']);
     }
 }

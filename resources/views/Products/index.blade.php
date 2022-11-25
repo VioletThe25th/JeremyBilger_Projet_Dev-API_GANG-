@@ -36,7 +36,12 @@
                                 <td>{{ $product->quantity }}</td>
                                 <td>
                                     <a href="{{ route('products.edit', $product->id) }}">{{__('Editer')}}</a>
-                                    <a href="{{ route('products.destroy', $product->id) }}">{{__('Supprimer')}}</a>
+                                    {{-- DELETE ACTION --}}
+                                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display: inline-block">
+                                        @csrf
+                                        @method("DELETE")
+                                        <a href="#" onclick="event.preventDefault(); if(confirm('Confirmez-vous la suppression de ce produit ?') ) {this.closest('form').submit();}"><img src="{{ asset('img/icons/remove-square.png') }}" alt="Supprimer le produit" title="Supprimer le produit"></a>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

@@ -60,7 +60,7 @@ class EtablissementController extends Controller
      */
     public function edit(Etablissement $etablissement)
     {
-        //
+        return view('etablissements.edit', compact('etablissement'));
     }
 
     /**
@@ -72,7 +72,14 @@ class EtablissementController extends Controller
      */
     public function update(UpdateEtablissementRequest $request, Etablissement $etablissement)
     {
-        //
+        $etablissement->update($request->except([
+            '_token', 
+            '_method'
+        ]));
+
+        return redirect()->route('etablissements.index')
+            ->with(['status' => 'success', 
+                    'message' => 'Etablissement updated successfully']);
     }
 
     /**
@@ -83,6 +90,10 @@ class EtablissementController extends Controller
      */
     public function destroy(Etablissement $etablissement)
     {
-        //
+        $etablissement->delete();
+
+        return redirect()->route('etablissements.index')
+            ->with(['status' => 'success', 
+                    'message' => 'Etablissement deleted successfully']);
     }
 }

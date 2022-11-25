@@ -90,6 +90,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        //return view('products.destroy', compact('product'));
+        $product->delete();
+
+        return redirect()->route('products.index')
+            ->with(['status' => 'success', 
+                    'message' => 'Product deleted successfully']);
     }
 }

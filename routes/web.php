@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GangController;
 use App\Http\Controllers\HomeController;
@@ -53,8 +54,17 @@ Route::middleware(['isAdmin'])->group(function(){
     Route::patch('/products/{product}', [ProductController::class, 'update'])
         ->where('product', '[0-9]+')
         ->name('products.update');
+    Route::patch('/etablissements/{etablissement}', [EtablissementController::class, 'update'])
+        ->where('etablissement', '[0-9]+')
+        ->name('etablissements.update');
+    Route::patch('/quartiers/{quartier}', [QuartierController::class, 'update'])
+        ->where('quartier', '[0-9]+')
+        ->name('quartiers.update');
+    Route::patch('/gangs/{gang}', [GangController::class, 'update'])
+        ->where('gang', '[0-9]+')
+        ->name('gangs.update');
 
-    //Route pour supprimer les différentes base de données
+    //Route pour supprimer les différentes entrées de la base de données
     Route::delete('/products/{product}', [ProductController::class, 'destroy'])
         ->name('products.destroy');
     Route::delete('/etablissements/{etablissement}', [EtablissementController::class, 'destroy'])

@@ -31,8 +31,13 @@
                                 <th scope="row">{{$gang->id}}</th>
                                 <td>{{ $gang->name }}</td>
                                 <td>
-                                    {{-- <a href="{{ route('gangs.edit', $gang->id) }}">{{__('Editer')}}</a>
-                                    <a href="{{ route('gangs.destroy', $gang->id) }}">{{__('Supprimer')}}</a> --}}
+                                    <a href="{{ route('gangs.edit', $gang->id) }}">{{__('Editer')}}</a>
+                                    {{-- DELETE ACTION --}}
+                                    <form action="{{ route('gangs.destroy', $gang->id) }}" method="POST" style="display: inline-block">
+                                        @csrf
+                                        @method("DELETE")
+                                        <a href="#" onclick="event.preventDefault(); if(confirm('Confirmez-vous la suppression de ce gang ?') ) {this.closest('form').submit();}"><img src="{{ asset('img/icons/remove-square.png') }}" alt="Supprimer le gang" title="Supprimer le gang"></a>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
