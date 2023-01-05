@@ -21,4 +21,9 @@ class Product extends Model
     {
         return $this->belongsTo(Gang::class);
     }
+
+    public function etablissement()
+    {
+        return $this->belongsTo(Etablissement::class);
+    }
 }

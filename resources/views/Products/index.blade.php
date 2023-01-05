@@ -16,6 +16,9 @@
                 @endif
 
                 <h1>Liste des produits</h1>
+                <div class="mb-3">
+                    <a href="{{ route('products.create') }}" class="btn btn-primary">{{__('Ajouter un produit')}}</a>
+                </div>
 
                 <table class="table table-striped">
                     <thead>
@@ -24,6 +27,8 @@
                         <th scope="col">{{__('Nom')}}</th>
                         <th scope="col">{{__('Prix')}}</th>
                         <th scope="col">{{__('Quantity')}}</th>
+                        <th scope="col">{{__('Etablissement')}}</th>
+                        <th scope="col">{{__('Gang')}}</th>
                         <th scope="col">{{__('Actions')}}</th>
                     </tr>
                     </thead>
@@ -34,6 +39,22 @@
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->price }}</td>
                                 <td>{{ $product->quantity }}</td>
+                                <td>
+                                    @if ($product->etablissement)
+                                        <a href="{{ route('etablissements.edit', $product->etablissement->id) }}">{{ $product->etablissement->name }}</a>
+                                    @else 
+                                        {{__("N'est vendu dans aucun établissement")}}
+                                    @endif
+                                </td>
+
+                                <td>
+                                    @if ($product->etablissement->quartier->gang)
+                                        <a href="{{ route('gangs.edit', $product->etablissement->quartier->gang->id) }}">{{ $product->etablissement->quartier->gang->name }}</a>
+                                    @else 
+                                        {{__("N'est vendu dans aucun gang")}}
+                                    @endif
+                                </td>
+
                                 <td>
                                     <a href="{{ route('products.edit', $product->id) }}">{{__('Editer')}}</a>
                                     {{-- DELETE ACTION --}}

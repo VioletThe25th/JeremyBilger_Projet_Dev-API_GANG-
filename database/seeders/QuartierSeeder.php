@@ -15,6 +15,6 @@ class QuartierSeeder extends Seeder
      */
     public function run()
     {
-        Quartier::factory(10)->create();
+        //Quartier::factory(10)->create();
     }
 }

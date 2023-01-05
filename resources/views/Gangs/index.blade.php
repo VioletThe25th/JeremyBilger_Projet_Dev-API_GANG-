@@ -16,12 +16,18 @@
                 @endif
 
                 <h1>Liste des gangs</h1>
+                <div class="mb-3">
+                    <a href="{{ route('gangs.create') }}" class="btn btn-primary">{{__('Ajouter un gang')}}</a>
+                </div>
 
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">{{__('Nom')}}</th>
+                        <th scope="col">{{__('Quartiers')}}</th>
+                        {{-- <th scope="col">{{__('Etablissements')}}</th>
+                        <th scope="col">{{__('Products')}}</th> --}}
                         <th scope="col">{{__('Actions')}}</th>
                     </tr>
                     </thead>
@@ -30,6 +36,25 @@
                             <tr>
                                 <th scope="row">{{$gang->id}}</th>
                                 <td>{{ $gang->name }}</td>
+                                <td>
+                                    @foreach ($gang->quartiers as $quartier)
+                                        @if ($gang->quartiers)
+                                            <a href="{{ route('quartiers.edit', $quartier->id) }}">{{ $quartier->name }}</a>
+                                        @else 
+                                            {{__("N'est possédé par aucun gang")}}
+                                        @endif
+                                    @endforeach
+                                </td>
+                                {{-- <td>
+                                    @foreach ($gang->etablissements as $etablissement)
+                                        <a href="{{ route('etablissements.edit', $etablissement->id) }}">{{ $etablissement->name }}</a>
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @foreach ($gang->products as $product)
+                                        <a href="{{ route('products.edit', $product->id) }}">{{ $product->name }}</a>
+                                    @endforeach
+                                </td> --}}
                                 <td>
                                     <a href="{{ route('gangs.edit', $gang->id) }}">{{__('Editer')}}</a>
                                     {{-- DELETE ACTION --}}

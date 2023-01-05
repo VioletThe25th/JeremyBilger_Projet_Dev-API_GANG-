@@ -15,6 +15,6 @@ class EtablissementSeeder extends Seeder
      */
     public function run()
     {
-        Etablissement::factory(100)->create();
+        // Etablissement::factory(100)->create();
     }
 }

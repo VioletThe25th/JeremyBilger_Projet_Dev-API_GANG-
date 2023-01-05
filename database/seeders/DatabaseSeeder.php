@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            EtablissementSeeder::class,
-            ProductSeeder::class,
-            QuartierSeeder::class,
+            // EtablissementSeeder::class,
+            // ProductSeeder::class,
+            // QuartierSeeder::class,
             GangSeeder::class,
         ]);
     }

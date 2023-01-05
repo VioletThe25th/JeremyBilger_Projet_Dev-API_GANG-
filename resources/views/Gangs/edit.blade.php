@@ -27,6 +27,27 @@
                         <input type="text" class="form-control" name="name" id="name" placeholder="{{__('Nom du gang')}}" value="{{$gang->name}}"><br>
                     </div>
 
+                    <div class="mb-3">
+                        <label for="quartier" class="form-label">{{__('Quartier possédés')}}</label>
+                        @foreach ($gang->quartiers as $quartier)
+                            <input type="text" class="form-control" name="quartier" id="quartier" placeholder="{{__('Quartiers possédés')}}" value="{{ $quartier->name }}"><br>
+                        @endforeach
+                    </div>
+
+                    {{-- <div class="mb-3">
+                        <label for="etablissement" class="form-label">{{__('Etablissement possédés')}}</label>
+                        @foreach ($gang->etablissements as $etablissement)
+                            <input type="text" class="form-control" name="etablissement" id="etablissement" placeholder="{{__('Etablissements possédés')}}" value="{{ $etablissement->name }}"><br>
+                        @endforeach
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="produit" class="form-label">{{__('Produits possédés')}}</label>
+                        @foreach ($gang->products as $product)
+                            <input type="text" class="form-control" name="produit" id="produit" placeholder="{{__('Produits possédés')}}" value="{{ $product->name }}"><br>
+                        @endforeach
+                    </div> --}}
+
                     <div>
                         <button class="btn btn-primary" type="submit">{{__('Save')}}</button>
                     </div>

@@ -37,6 +37,15 @@
                         <input type="text" class="form-control" name="quantity" id="quantity" placeholder="{{__('Quantité')}}" value="{{$product->quantity}}"><br>
                     </div>
 
+                    <div class="mb-3">
+                        <label for="etablissement" class="form-label">{{__('Etablissement')}}</label>
+                        @if ($product->etablissement)
+                            <input type="text" class="form-control" name="etablissement" id="etablissement" placeholder="{{__('etablissement')}}" value="{{$product->etablissement->name}}"><br>  
+                        @else
+                            <input type="text" class="form-control" name="etablissement" id="etablissement" placeholder="{{__('etablissement')}}" value=""><br>
+                        @endif
+                    </div>
+
                     <div>
                         <button class="btn btn-primary" type="submit">{{__('Save')}}</button>
                     </div>

@@ -37,6 +37,13 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                            <a href="{{route('lang', 'en')}}">English</a>
+                            <a href="{{route('lang', 'fr')}}">Français</a>
+                            <a href="{{route('lang', 'es')}}">Español</a>
+                            <a href="{{route('lang', 'it')}}">Italian</a>
+                            <a href="{{route('lang', 'ja')}}">日本語</a>
+                        </li>
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">

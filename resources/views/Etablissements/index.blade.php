@@ -16,6 +16,9 @@
                 @endif
 
                 <h1>Liste des établissements</h1>
+                <div class="mb-3">
+                    <a href="{{ route('etablissements.create') }}" class="btn btn-primary">{{__('Ajouter un établissement')}}</a>
+                </div>
 
                 <table class="table table-striped">
                     <thead>
@@ -24,6 +27,8 @@
                         <th scope="col">{{__('Nom')}}</th>
                         <th scope="col">{{__('Addresse')}}</th>
                         <th scope="col">{{__('Type')}}</th>
+                        <th scope="col">{{__('Quartier')}}</th>
+                        {{-- <th scope="col">{{__('Gang')}}</th> --}}
                         <th scope="col">{{__('Actions')}}</th>
                     </tr>
                     </thead>
@@ -34,6 +39,22 @@
                                 <td>{{ $etablissement->name }}</td>
                                 <td>{{ $etablissement->adress }}</td>
                                 <td>{{ $etablissement->type }}</td>
+                                <td>
+                                    @if ($etablissement->quartier)
+                                        <a href="{{ route('quartiers.edit', $etablissement->quartier->id) }}">{{ $etablissement->quartier->name }}</a>
+                                    @else 
+                                        {{__('Aucun')}}
+                                    @endif
+                                </td>
+
+                                {{-- <td>
+                                    @if ($etablissement->gang)
+                                        <a href="{{ route('gangs.edit', $etablissement->gang->id) }}">{{ $etablissement->gang->name }}</a>
+                                    @else 
+                                        {{__('Aucun')}}
+                                    @endif
+                                </td> --}}
+
                                 <td>
                                     <a href="{{ route('etablissements.edit', $etablissement->id) }}">{{__('Editer')}}</a>
                                     {{-- DELETE ACTION --}}

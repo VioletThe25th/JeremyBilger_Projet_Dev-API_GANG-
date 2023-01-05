@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page_title', "Edition du quartier")
+@section('page_title', "Ajout d'un établissement")
 
 @section('content')
 
@@ -18,22 +18,27 @@
                     </div>
                 @endif
 
-                <form action="{{ route('quartiers.update', $quartier->id) }}" method="POST">
+                <form action="{{ route('etablissements.store') }}" method="POST">
                     @csrf
-                    @method('PATCH')
 
                     <div class="mb-3">
                         <label for="name" class="form-label">{{__('Nom')}}</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="{{__('Nom du quartier')}}" value="{{$quartier->name}}"><br>
+                        <input type="text" class="form-control" name="name" id="name"><br>
                     </div>
 
                     <div class="mb-3">
-                        <label for="name" class="form-label">{{__('Gang')}}</label>
-                        @if ($quartier->gangs)
-                            <input type="text" class="form-control" name="gang" id="gang" placeholder="{{__('Gang')}}" value="{{$quartier->gangs->name}}"><br>
-                        @else 
-                            <input type="text" class="form-control" name="gang" id="gang" placeholder="{{__('Gang')}}" value=""><br>
-                        @endif
+                        <label for="name" class="form-label">{{__('Addresse')}}</label>
+                        <input type="text" class="form-control" name="adress" id="adress"><br>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">{{__('Type')}}</label>
+                        <input type="text" class="form-control" name="type" id="type"><br>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">{{__('Quartier')}}</label>
+                        <input type="text" class="form-control" name="type" id="type"><br>
                     </div>
 
                     <div>

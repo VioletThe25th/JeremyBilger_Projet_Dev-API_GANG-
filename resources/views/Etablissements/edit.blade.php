@@ -37,6 +37,24 @@
                         <input type="text" class="form-control" name="type" id="type" placeholder="{{__('Type')}}" value="{{$etablissement->type}}"><br>
                     </div>
 
+                    <div class="mb-3">
+                        <label for="name" class="form-label">{{__('Quartier')}}</label>
+                        @if ($etablissement->quartier)
+                            <input type="text" class="form-control" name="quartier" id="quartier" placeholder="{{__('Quartier')}}" value="{{$etablissement->quartier->name}}"><br>
+                        @else 
+                            <input type="text" class="form-control" name="quartier" id="quartier" placeholder="{{__('Quartier')}}" value=""><br>
+                        @endif
+                    </div>
+
+                    {{-- <div class="mb-3">
+                        <label for="name" class="form-label">{{__('Gang')}}</label>
+                        @if ($etablissement->gang)
+                            <input type="text" class="form-control" name="gang" id="gang" placeholder="{{__('Gang')}}" value="{{$etablissement->gang->name}}"><br>
+                        @else 
+                            <input type="text" class="form-control" name="gang" id="gang" placeholder="{{__('Gang')}}" value=""><br>
+                        @endif
+                    </div> --}}
+
                     <div>
                         <button class="btn btn-primary" type="submit">{{__('Save')}}</button>
                     </div>

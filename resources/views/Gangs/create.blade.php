@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page_title', "Edition du quartier")
+@section('page_title', "Ajout d'un gang")
 
 @section('content')
 
@@ -18,22 +18,17 @@
                     </div>
                 @endif
 
-                <form action="{{ route('quartiers.update', $quartier->id) }}" method="POST">
+                <form action="{{ route('gangs.store') }}" method="POST">
                     @csrf
-                    @method('PATCH')
 
                     <div class="mb-3">
                         <label for="name" class="form-label">{{__('Nom')}}</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="{{__('Nom du quartier')}}" value="{{$quartier->name}}"><br>
+                        <input type="text" class="form-control" name="name" id="name" value=""><br>
                     </div>
 
                     <div class="mb-3">
-                        <label for="name" class="form-label">{{__('Gang')}}</label>
-                        @if ($quartier->gangs)
-                            <input type="text" class="form-control" name="gang" id="gang" placeholder="{{__('Gang')}}" value="{{$quartier->gangs->name}}"><br>
-                        @else 
-                            <input type="text" class="form-control" name="gang" id="gang" placeholder="{{__('Gang')}}" value=""><br>
-                        @endif
+                        <label for="name" class="form-label">{{__('Quartier')}}</label>
+                        <input type="text" class="form-control" name="quartier" id="quartier" value=""><br>
                     </div>
 
                     <div>

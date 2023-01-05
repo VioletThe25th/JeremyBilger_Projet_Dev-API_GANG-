@@ -23,6 +23,6 @@ class Quartier extends Model
 
     public function gangs()
     {
-        return $this->belongsTo(Gang::class);
+        return $this->belongsTo(Gang::class, 'gang_id');
     }
 }

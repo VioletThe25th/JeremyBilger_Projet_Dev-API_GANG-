@@ -3,11 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gang;
+use Illuminate\Http\Request;
+use App\Mail\CreateGangEmail;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\StoreGangRequest;
+
 use App\Http\Requests\UpdateGangRequest;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
 
 class GangController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->authorizeResource(Gang::class, 'gang');
+    // }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,9 +37,15 @@ class GangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
+        if ($request->user()->cannot('create', Gang::class)) {
+            abort(403);
+        }
+
+
+        return view('Gangs.create');
     }
 
     /**
@@ -38,7 +56,13 @@ class GangController extends Controller
      */
     public function store(StoreGangRequest $request)
     {
-        //
+        Gang::create($request -> validated());
+        Mail::to('bilgerjeremy5705@gmail.com')->send(new CreateGangEmail($request->name, $request->quartier));
+        return redirect() -> route('gangs.index');
+    }
+
+    public static function testcron() {
+        Mail::to('adresse@email.fr')->send(new CreateGangEmail('Nom du gang', 'quartier du gang'));
     }
 
     /**

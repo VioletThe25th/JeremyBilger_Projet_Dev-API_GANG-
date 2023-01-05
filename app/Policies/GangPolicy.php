@@ -41,7 +41,7 @@ class GangPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->isAdmin();
     }
 
     /**

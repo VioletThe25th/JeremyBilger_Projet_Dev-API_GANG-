@@ -16,12 +16,17 @@
                 @endif
 
                 <h1>Liste des quartiers</h1>
+                <div class="mb-3">
+                    <a href="{{route('quartiers.create')}}" class="btn btn-primary">Ajouter un quartier</a>
+                </div>
 
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">{{__('Nom')}}</th>
+                        {{-- <th scope="col">{{__('Etablissements')}}</th> --}}
+                        <th scope="col">{{__('Gangs')}}</th>
                         <th scope="col">{{__('Actions')}}</th>
                     </tr>
                     </thead>
@@ -30,6 +35,20 @@
                             <tr>
                                 <th scope="row">{{$quartier->id}}</th>
                                 <td>{{ $quartier->name }}</td>
+                                {{-- <td>
+                                    @foreach ($quartier->etablissements as $etablissement)
+                                        <a href="{{ route('etablissements.edit', $etablissement->id) }}">{{ $etablissement->name }}</a>
+                                    @endforeach
+                                </td> --}}
+
+                                <td>
+                                    @if ($quartier->gangs)
+                                        <a href="{{ route('gangs.edit', $quartier->gangs->id) }}">{{ $quartier->gangs->name }}</a>
+                                    @else 
+                                        {{__("N'est possédé par aucun gang")}}                                        
+                                    @endif
+                                </td>
+
                                 <td>
                                     <a href="{{ route('quartiers.edit', $quartier->id) }}">{{__('Editer')}}</a>
                                     {{-- DELETE ACTION --}}

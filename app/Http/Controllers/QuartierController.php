@@ -27,7 +27,7 @@ class QuartierController extends Controller
      */
     public function create()
     {
-        //
+        return view('quartiers.create');
     }
 
     /**
@@ -38,7 +38,9 @@ class QuartierController extends Controller
      */
     public function store(StoreQuartierRequest $request)
     {
-        //
+        Quartier::create($request->validated());
+
+        return redirect()->route('quartiers.index');
     }
 
     /**

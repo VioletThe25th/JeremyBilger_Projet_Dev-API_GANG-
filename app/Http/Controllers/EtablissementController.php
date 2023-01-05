@@ -27,7 +27,7 @@ class EtablissementController extends Controller
      */
     public function create()
     {
-        //
+        return view('etablissements.create');
     }
 
     /**
@@ -38,7 +38,9 @@ class EtablissementController extends Controller
      */
     public function store(StoreEtablissementRequest $request)
     {
-        //
+        Etablissement::create($request->validated());
+
+        return redirect()->route('etablissements.index');
     }
 
     /**
