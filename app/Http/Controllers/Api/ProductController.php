@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateStoreRequest;
+use App\Http\Requests\UpdateProductRequest;
+use App\Http\Resources\Api\V1\ProductResource;
 use App\Http\Resources\Api\V1\ProductCollection;
 
 class ProductController extends Controller
@@ -25,9 +28,13 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UpdateProductRequest $request)
     {
-        //
+        $user = Product::create($request->validated());
+        return response()->json([
+            'message' => 'Product created',
+            'product' => new ProductResource($user)
+        ], 201);
     }
 
     /**

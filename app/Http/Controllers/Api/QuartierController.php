@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Models\Quartier;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateStoreRequest;
+use App\Http\Requests\UpdateQuartierRequest;
+use App\Http\Resources\Api\V1\QuartierResource;
 use App\Http\Resources\Api\V1\QuartierCollection;
 
 class QuartierController extends Controller
@@ -25,9 +28,13 @@ class QuartierController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UpdateQuartierRequest $request)
     {
-        //
+        $user = Quartier::create($request->validated());
+        return response()->json([
+            'message' => 'Gang created',
+            'gang' => new QuartierResource($user)
+        ], 201);
     }
 
     /**

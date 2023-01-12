@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Models\Gang;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateGangRequest;
+use App\Http\Resources\Api\V1\GangResource;
 use App\Http\Resources\Api\V1\GangCollection;
 
 class GangController extends Controller
@@ -25,9 +27,13 @@ class GangController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UpdateGangRequest $request)
     {
-        //
+        $user = Gang::create($request->validated());
+        return response()->json([
+            'message' => 'Gang created',
+            'gang' => new GangResource($user)
+        ], 201);
     }
 
     /**

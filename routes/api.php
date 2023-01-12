@@ -35,6 +35,12 @@ Route::middleware('auth:api')->group(function(){
     Route::get('/etablissements', [EtablissementController::class, 'index']);
     Route::get('/quartiers', [QuartierController::class, 'index']);
     Route::get('/gangs', [GangController::class, 'index']);
+
+    // Route pour créer une nouvelle entrée dans une table en POST :
+    Route::POST('/products', [ProductController::class, 'store']);
+    Route::POST('/etablissements', [etablissementsController::class, 'store']);
+    Route::POST('/quartiers', [QuartierController::class, 'store']);
+    Route::POST('/gangs', [GangController::class, 'store']);
 });
 
 Route::post('/signup', [UserController::class, 'store']);

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Models\Etablissement;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateEtablissementRequest;
+use App\Http\Resources\Api\V1\EtablissementResource;
 use App\Http\Resources\Api\V1\EtablissementCollection;
 
 class EtablissementController extends Controller
@@ -25,9 +27,13 @@ class EtablissementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UpdateEtablissementRequest $request)
     {
-        //
+        $user = Etablissement::create($request->validated());
+        return response()->json([
+            'message' => 'Etablissement created',
+            'etablissement' => new EtablissementResource($user)
+        ], 201);
     }
 
     /**
