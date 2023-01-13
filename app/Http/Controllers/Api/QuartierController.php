@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Models\Quartier;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UpdateStoreRequest;
 use App\Http\Requests\UpdateQuartierRequest;
 use App\Http\Resources\Api\V1\QuartierResource;
 use App\Http\Resources\Api\V1\QuartierCollection;
@@ -45,7 +44,7 @@ class QuartierController extends Controller
      */
     public function show($id)
     {
-        //
+        return new QuartierResource(Quartier::find($id));
     }
 
     /**
@@ -55,9 +54,16 @@ class QuartierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateQuartierRequest $request, Quartier $quartier)
     {
-        //
+        $quartier->update($request->except([
+            '_token', 
+            '_method'
+        ]));
+        return response()->json([
+            'status' => 'success', 
+            'message' => 'Quartier updated successfully'
+        ]);
     }
 
     /**
@@ -66,8 +72,13 @@ class QuartierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Quartier $quartier)
     {
-        //
+        $quartier->delete();
+
+        return response()->json([
+            'status' => 'success', 
+            'message' => 'Quartier deleted successfully'
+        ]);
     }
 }

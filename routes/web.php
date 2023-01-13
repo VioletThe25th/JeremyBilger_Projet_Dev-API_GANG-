@@ -97,4 +97,6 @@ Route::middleware(['isAdmin'])->group(function(){
         ->name('quartiers.store');
     Route::post('/gangs', [GangController::class, 'store'])
         ->name('gangs.store');
+
+    Route::get('/gangs/search', [GangController::class, 'search'])->name('gangs.search');
 });

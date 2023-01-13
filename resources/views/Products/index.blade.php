@@ -15,7 +15,7 @@
                     
                 @endif
 
-                <h1>Liste des produits</h1>
+                <h1>{{__("Liste des produits")}}</h1>
                 <div class="mb-3">
                     <a href="{{ route('products.create') }}" class="btn btn-primary">{{__('Ajouter un produit')}}</a>
                 </div>
@@ -26,7 +26,7 @@
                         <th scope="col">#</th>
                         <th scope="col">{{__('Nom')}}</th>
                         <th scope="col">{{__('Prix')}}</th>
-                        <th scope="col">{{__('Quantity')}}</th>
+                        <th scope="col">{{__('Quantité')}}</th>
                         <th scope="col">{{__('Etablissement')}}</th>
                         <th scope="col">{{__('Gang')}}</th>
                         <th scope="col">{{__('Actions')}}</th>
@@ -61,7 +61,7 @@
                                     <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display: inline-block">
                                         @csrf
                                         @method("DELETE")
-                                        <a href="#" onclick="event.preventDefault(); if(confirm('Confirmez-vous la suppression de ce produit ?') ) {this.closest('form').submit();}"><img src="{{ asset('img/icons/remove-square.png') }}" alt="Supprimer le produit" title="Supprimer le produit"></a>
+                                        <a href="#" onclick="event.preventDefault(); if(confirm('Confirmez-vous la suppression de ce produit ?') ) {this.closest('form').submit();}"><img src="{{ asset('img/icons/remove-square.png') }}" alt={{__("Supprimer le produit")}} title={{__("Supprimer le produit")}}></a>
                                     </form>
                                 </td>
                             </tr>

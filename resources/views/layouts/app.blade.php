@@ -40,9 +40,9 @@
                         <li class="nav-item">
                             <a href="{{route('lang', 'en')}}">English</a>
                             <a href="{{route('lang', 'fr')}}">Français</a>
-                            <a href="{{route('lang', 'es')}}">Español</a>
+                            {{-- <a href="{{route('lang', 'es')}}">Español</a>
                             <a href="{{route('lang', 'it')}}">Italian</a>
-                            <a href="{{route('lang', 'ja')}}">日本語</a>
+                            <a href="{{route('lang', 'ja')}}">日本語</a> --}}
                         </li>
                         @guest
                             @if (Route::has('login'))
@@ -58,7 +58,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('products.index') }}">{{ __('Products') }}</a>
+                                <a class="nav-link" href="{{ route('products.index') }}">{{ __('Produits') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('etablissements.index') }}">{{ __('Etablissements') }}</a>

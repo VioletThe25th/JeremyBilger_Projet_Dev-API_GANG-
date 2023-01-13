@@ -45,7 +45,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        return new ProductResource(Product::find($id));
     }
 
     /**
@@ -55,9 +55,17 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        //dd($request);
+        $product->update($request->except([
+            '_token', 
+            '_method'
+        ]));
+        return response()->json([
+            'status' => 'success', 
+            'message' => 'Product updated successfully'
+        ]);
     }
 
     /**
@@ -66,8 +74,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return response()->json([
+            'status' => 'success', 
+            'message' => 'Product deleted successfully'
+        ]);
     }
 }

@@ -15,9 +15,12 @@
                     
                 @endif
 
-                <h1>Liste des gangs</h1>
+                <h1>{{ __('Liste des gangs')}}</h1>
                 <div class="mb-3">
                     <a href="{{ route('gangs.create') }}" class="btn btn-primary">{{__('Ajouter un gang')}}</a>
+                </div>
+                </div>
+                    <input id="searchbar" onkeyup="{{route('gangs.search')}}" type="text" name="search" placeholder="Search..">
                 </div>
 
                 <table class="table table-striped">
@@ -61,7 +64,7 @@
                                     <form action="{{ route('gangs.destroy', $gang->id) }}" method="POST" style="display: inline-block">
                                         @csrf
                                         @method("DELETE")
-                                        <a href="#" onclick="event.preventDefault(); if(confirm('Confirmez-vous la suppression de ce gang ?') ) {this.closest('form').submit();}"><img src="{{ asset('img/icons/remove-square.png') }}" alt="Supprimer le gang" title="Supprimer le gang"></a>
+                                        <a href="#" onclick="event.preventDefault(); if(confirm('Are you sure ?') ) {this.closest('form').submit();}"><img src="{{ asset('img/icons/remove-square.png') }}" alt={{__("Supprimer le gang")}} title={{__("Supprimer le gang")}}></a>
                                     </form>
                                 </td>
                             </tr>

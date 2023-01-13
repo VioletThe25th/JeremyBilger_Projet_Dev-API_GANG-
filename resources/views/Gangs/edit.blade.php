@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="quartier" class="form-label">{{__('Quartier possédés')}}</label>
+                        <label for="quartier" class="form-label">{{__('Quartiers possédés')}}</label>
                         @foreach ($gang->quartiers as $quartier)
                             <input type="text" class="form-control" name="quartier" id="quartier" placeholder="{{__('Quartiers possédés')}}" value="{{ $quartier->name }}"><br>
                         @endforeach

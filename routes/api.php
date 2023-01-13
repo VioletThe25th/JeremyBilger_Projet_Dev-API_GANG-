@@ -38,9 +38,27 @@ Route::middleware('auth:api')->group(function(){
 
     // Route pour créer une nouvelle entrée dans une table en POST :
     Route::POST('/products', [ProductController::class, 'store']);
-    Route::POST('/etablissements', [etablissementsController::class, 'store']);
+    Route::POST('/etablissements', [EtablissementController::class, 'store']);
     Route::POST('/quartiers', [QuartierController::class, 'store']);
     Route::POST('/gangs', [GangController::class, 'store']);
+
+    //Route pour voir les données d'une entrée dans une table :
+    Route::get('/products/{id}', [ProductController::class, 'show']);
+    Route::get('/etablissements/{id}', [EtablissementController::class, 'show']);
+    Route::get('/quartiers/{id}', [QuartierController::class, 'show']);
+    Route::get('/gangs/{id}', [GangController::class, 'show']);
+
+    //Route pour mettre à jour un élément d'une table : 
+    Route::patch('/products/{product}', [ProductController::class, 'update']);
+    Route::patch('/etablissements/{etablissement}', [EtablissementController::class, 'update']);
+    Route::patch('/quartiers/{quartier}', [QuartierController::class, 'update']);
+    Route::patch('/gangs/{gang}', [GangController::class, 'update']);
+
+    //Route pour supprimer un élément d'une table :
+    Route::delete('/products/{product}', [ProductController::class, 'destroy']);
+    Route::delete('/etablissements/{etablissement}', [EtablilssementController::class, 'destroy']);
+    Route::delete('/quartiers/{quartier}', [QuartierController::class, 'destroy']);
+    Route::delete('/gangs/{gang}', [GangController::class, 'destroy']);
 });
 
 Route::post('/signup', [UserController::class, 'store']);

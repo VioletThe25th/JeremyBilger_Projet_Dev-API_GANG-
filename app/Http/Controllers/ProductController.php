@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 
@@ -19,7 +20,7 @@ class ProductController extends Controller
 
         return view('products.index', compact('products'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *

@@ -44,7 +44,7 @@ class EtablissementController extends Controller
      */
     public function show($id)
     {
-        //
+        return new EtablissementResource(Etablissement::find($id));
     }
 
     /**
@@ -54,9 +54,16 @@ class EtablissementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateEtablissementRequest $request, Etablissement $etablissement)
     {
-        //
+        $etablissement->update($request->except([
+            '_token', 
+            '_method'
+        ]));
+        return response()->json([
+            'status' => 'success', 
+            'message' => 'Etablissement updated successfully'
+        ]);
     }
 
     /**
@@ -65,8 +72,13 @@ class EtablissementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Etablissement $etablissement)
     {
-        //
+        $etablissement->delete();
+
+        return response()->json([
+            'status' => 'success', 
+            'message' => 'Etablissement deleted successfully'
+        ]);
     }
 }

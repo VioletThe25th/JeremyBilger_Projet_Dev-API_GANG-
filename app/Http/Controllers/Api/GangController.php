@@ -44,7 +44,7 @@ class GangController extends Controller
      */
     public function show($id)
     {
-        //
+        return new GangResource(Gang::find($id));
     }
 
     /**
@@ -54,9 +54,16 @@ class GangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateGangRequest $request, Gang $gang)
     {
-        //
+        $gang->update($request->except([
+            '_token', 
+            '_method'
+        ]));
+        return response()->json([
+            'status' => 'success', 
+            'message' => 'Gang updated successfully'
+        ]);
     }
 
     /**
@@ -65,8 +72,13 @@ class GangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Gang $gang)
     {
-        //
+        $gang->delete();
+
+        return response()->json([
+            'status' => 'success', 
+            'message' => 'Gang deleted successfully'
+        ]);
     }
 }

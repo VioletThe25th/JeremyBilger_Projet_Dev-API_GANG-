@@ -15,7 +15,7 @@
                     
                 @endif
 
-                <h1>Liste des établissements</h1>
+                <h1>{{__("Liste des établissements")}}</h1>
                 <div class="mb-3">
                     <a href="{{ route('etablissements.create') }}" class="btn btn-primary">{{__('Ajouter un établissement')}}</a>
                 </div>
@@ -61,7 +61,7 @@
                                     <form action="{{ route('etablissements.destroy', $etablissement->id) }}" method="POST" style="display: inline-block">
                                         @csrf
                                         @method("DELETE")
-                                        <a href="#" onclick="event.preventDefault(); if(confirm('Confirmez-vous la suppression de cet établissement ?') ) {this.closest('form').submit();}"><img src="{{ asset('img/icons/remove-square.png') }}" alt="Supprimer l'établissement" title="Supprimer l'établissement"></a>
+                                        <a href="#" onclick="event.preventDefault(); if(confirm('Confirmez-vous la suppression de cet établissement ?') ) {this.closest('form').submit();}"><img src="{{ asset('img/icons/remove-square.png') }}" alt={{__("Supprimer l'établissement")}} title={{__("Supprimer l'établissement")}}></a>
                                     </form>
                                 </td>
                             </tr>

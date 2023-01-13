@@ -120,4 +120,9 @@ class GangController extends Controller
             ->with(['status' => 'success', 
                     'message' => 'gang deleted successfully']);
     }
+
+    public function search(Request $request)
+    {
+        return Gang::find($request->search)->get();
+    }
 }

@@ -15,9 +15,9 @@
                     
                 @endif
 
-                <h1>Liste des quartiers</h1>
+                <h1>{{__("Liste des quartiers")}}</h1>
                 <div class="mb-3">
-                    <a href="{{route('quartiers.create')}}" class="btn btn-primary">Ajouter un quartier</a>
+                    <a href="{{route('quartiers.create')}}" class="btn btn-primary">{{__("Ajouter un quartier")}}</a>
                 </div>
 
                 <table class="table table-striped">
@@ -55,7 +55,7 @@
                                     <form action="{{ route('quartiers.destroy', $quartier->id) }}" method="POST" style="display: inline-block">
                                         @csrf
                                         @method("DELETE")
-                                        <a href="#" onclick="event.preventDefault(); if(confirm('Confirmez-vous la suppression de ce quartier ?') ) {this.closest('form').submit();}"><img src="{{ asset('img/icons/remove-square.png') }}" alt="Supprimer le quartier" title="Supprimer le quartier"></a>
+                                        <a href="#" onclick="event.preventDefault(); if(confirm('Are you sure ?') ) {this.closest('form').submit();}"><img src="{{ asset('img/icons/remove-square.png') }}" alt={{__("Supprimer le quartier")}} title={{__("Supprimer le quartier")}}></a>
                                     </form>
                                 </td>
                             </tr>
